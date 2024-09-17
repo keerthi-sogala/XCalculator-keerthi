@@ -8,7 +8,11 @@ const Calculator = () => {
   const handleClick = (value) => {
     if (value === '=') {
       try {
-        setResult(eval(input));
+        if (input.trim() && !/[\+\-\*\/]$/.test(input)) {
+          setResult(eval(input));
+        } else {
+          setResult('Error');
+        }
       } catch {
         setResult('Error');
       }
